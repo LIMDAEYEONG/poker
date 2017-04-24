@@ -10,6 +10,7 @@ import java.util.Map;
 public class Evaluator {
     public String evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
+        Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
 
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
@@ -21,11 +22,29 @@ public class Evaluator {
             }
         }
 
+        for (Card card : cardList) {
+            if (countMap.containsKey(card.getRank())) {
+                Integer count = countMap.get(card.getRank());
+                count = new Integer(count.intValue() + 1);
+                countMap.put(card.getRank(), count);
+            } else {
+                countMap.put(card.getRank(), new Integer(1));
+            }
+        }
+
+
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
                 return "FLUSH";
             }
         }
+
+        for (Integer key : countMap.keySet()) {
+            if (countMap.get(key) == 2) {
+                return "ONE_PAIR";
+            }
+        }
+
         return "NOTHING";
     }
 }
