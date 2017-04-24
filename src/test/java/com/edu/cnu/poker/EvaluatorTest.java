@@ -17,13 +17,13 @@ public class EvaluatorTest {
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(1,Suit.CLUBS),
-                new Card(4,Suit.CLUBS),
-                new Card(8,Suit.CLUBS),
-                new Card(13,Suit.CLUBS),
-                new Card(2,Suit.CLUBS)
+                new Card(1, Suit.CLUBS),
+                new Card(4, Suit.CLUBS),
+                new Card(8, Suit.CLUBS),
+                new Card(13, Suit.CLUBS),
+                new Card(2, Suit.CLUBS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FLUSH"));
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.FULSH));
     }
 }
