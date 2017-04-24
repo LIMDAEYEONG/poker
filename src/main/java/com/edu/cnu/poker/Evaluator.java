@@ -43,6 +43,9 @@ public class Evaluator {
             if (countMap.get(key) == 2) {
                 return HandRanking.ONE_PAIR;
             }
+            else if(countMap.get(key) == 3){
+                return HandRanking.TRIPLE;
+            }
         }
 
         return HandRanking.NOTHING;
