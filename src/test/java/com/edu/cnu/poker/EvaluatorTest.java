@@ -109,6 +109,34 @@ public class EvaluatorTest {
         assertThat(result, is(HandRanking.STRAIGHT));
     }
 
+    @Test
+    public void 숫자가_5번연속이고_같은모양이면_스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.DIAMONDS),
+                new Card(2, Suit.DIAMONDS),
+                new Card(3, Suit.DIAMONDS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(5, Suit.DIAMONDS)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.STRAIGHT_FULSH));
+    }
+
+    @Test
+    public void 숫자가_5번연속이고_모양이_스페이드면_로얄스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.SPADES),
+                new Card(10, Suit.SPADES),
+                new Card(11, Suit.SPADES),
+                new Card(12, Suit.SPADES),
+                new Card(13, Suit.SPADES)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.ROYAL_STRAIGHT_FLUSH));
+    }
+
 }
 
 
