@@ -20,9 +20,7 @@ public class Evaluator {
             } else {
                 tempMap.put(card.getSuit(), new Integer(1));
             }
-        }
 
-        for (Card card : cardList) {
             if (countMap.containsKey(card.getRank())) {
                 Integer count = countMap.get(card.getRank());
                 count = new Integer(count.intValue() + 1);
@@ -30,6 +28,7 @@ public class Evaluator {
             } else {
                 countMap.put(card.getRank(), new Integer(1));
             }
+
         }
 
 
@@ -42,6 +41,8 @@ public class Evaluator {
         for (Integer key : countMap.keySet()) {
             if (countMap.get(key) == 2) {
                 return HandRanking.ONE_PAIR;
+            } else if(countMap.get(key) == 4) {
+                return HandRanking.FOUR_CARD;
             }
         }
 
