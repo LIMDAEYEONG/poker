@@ -41,6 +41,20 @@ public class EvaluatorTest {
         assertThat(result, is(HandRanking.ONE_PAIR));
     }
 
+    @Test
+    public void 숫자가_4개가동일하면_포카드다(){
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4,Suit.DIAMONDS),
+                new Card(4, Suit.HEARTS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(4, Suit.SPADES),
+                new Card(12, Suit.CLUBS)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.FOUR_CARD));
+    }
+
 
 
 }
