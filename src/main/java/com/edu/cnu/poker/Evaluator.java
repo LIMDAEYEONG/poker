@@ -90,7 +90,7 @@ public class Evaluator {
                 return HandRanking.ONE_PAIR;
             }
         }
-        
+
         return HandRanking.NOTHING;
     }
 }
