@@ -41,7 +41,11 @@ public class Evaluator {
         for (Integer key : countMap.keySet()) {
             if (countMap.get(key) == 2) {
                 return HandRanking.ONE_PAIR;
-            } else if(countMap.get(key) == 4) {
+            }
+            else if(countMap.get(key) == 3){
+                return HandRanking.TRIPLE;
+            }
+            else if(countMap.get(key) == 4) {
                 return HandRanking.FOUR_CARD;
             }
         }

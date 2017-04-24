@@ -54,6 +54,19 @@ public class EvaluatorTest {
         HandRanking result = evaluator.evaluate(cardList);
         assertThat(result, is(HandRanking.FOUR_CARD));
     }
+    @Test
+    public void 숫자가_3개가동일하면_트리플이다(){
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4,Suit.DIAMONDS),
+                new Card(4, Suit.HEARTS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(5, Suit.SPADES),
+                new Card(12, Suit.CLUBS)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.TRIPLE));
+    }
 
 
 
