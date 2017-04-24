@@ -36,6 +36,7 @@ public class Evaluator {
             }
         }
 
+        /* Two Pair */
         for (Integer key1 : countMap.keySet()) {
             if (countMap.get(key1) == 2) {
                 for (Integer key2 : countMap.keySet()) {
