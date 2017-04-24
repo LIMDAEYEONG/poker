@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by cse on 2017-04-17.
  */
 public class Evaluator {
-    public String evaluate(List<Card> cardList) {
+    public HandRanking evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
 
         for (Card card : cardList) {
@@ -23,9 +23,9 @@ public class Evaluator {
 
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
-                return "FLUSH";
+                return HandRanking.FULSH;
             }
         }
-        return "NOTHING";
+        return HandRanking.NOTHING;
     }
 }
