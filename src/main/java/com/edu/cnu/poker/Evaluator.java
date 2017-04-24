@@ -36,14 +36,28 @@ public class Evaluator {
             }
         }
 
-        /* Two Pair */
         for (Integer key1 : countMap.keySet()) {
             if (countMap.get(key1) == 2) {
                 for (Integer key2 : countMap.keySet()) {
-                    if (countMap.get(key2) == 2 && key1 != key2) {
+                    if (countMap.get(key2) == 3 && key1 != key2) {
+                        return HandRanking.FULL_HOUSE;
+                    }
+                    else if (countMap.get(key2) == 2 && key1 != key2) {
                         return HandRanking.TWO_PAIR;
                     }
                 }
+                return HandRanking.ONE_PAIR;
+            }
+            else if (countMap.get(key1) == 3){
+                for (Integer key2 : countMap.keySet()) {
+                    if (countMap.get(key2) == 2 && key1 != key2) {
+                        return HandRanking.FULL_HOUSE;
+                    }
+                }
+                return HandRanking.TRIPLE;
+            }
+            else if (countMap.get(key1) == 4){
+                return HandRanking.FOUR_CARD;
             }
         }
 
