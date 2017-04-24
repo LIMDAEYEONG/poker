@@ -10,7 +10,7 @@ public enum HandRanking {
     TRIPLE(3),
     TWO_PAIR(2),
     ONE_PAIR(1),
-    NOTHING(0);
+    NOTHING(0); //High card
 
     private int rankOfHand;
 
