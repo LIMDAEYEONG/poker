@@ -53,18 +53,45 @@ public class EvaluatorTest {
         HandRanking result = evaluator.evaluate(cardList);
         assertThat(result, is(HandRanking.TRIPLE));
     }
-
     @Test
-    public void 숫자가_4개가동일하면_포카드다(){
+    public void 숫자가_2개가동일한것이_두쌍있으면_투페어다(){
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(4,Suit.DIAMONDS),
-                new Card(4, Suit.HEARTS),
-                new Card(4, Suit.DIAMONDS),
-                new Card(4, Suit.SPADES),
+                new Card(2,Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS),
+                new Card(7, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
                 new Card(12, Suit.CLUBS)
         );
         HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.TWO_PAIR));
+    }
+
+    @Test
+    public void 숫자가_4개가동일한것이있으면_포카드이다(){
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(7, Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS),
+                new Card(7, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
+                new Card(7, Suit.CLUBS)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
         assertThat(result, is(HandRanking.FOUR_CARD));
+    }
+
+    @Test
+    public void 숫자가_3개가동일한것과_2개가동일한것이_한쌍씩있으면_풀하우스다(){
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS),
+                new Card(7, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
+                new Card(2, Suit.CLUBS)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.FULL_HOUSE));
     }
 }
