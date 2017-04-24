@@ -37,6 +37,7 @@ public class Evaluator {
                 return HandRanking.FLUSH;
             }
         }
+
         /* Four Card */
         for(Integer key : countMap.keySet()){
             if(countMap.get(key) == 4) {
@@ -87,18 +88,9 @@ public class Evaluator {
         for (Integer key : countMap.keySet()) {
             if (countMap.get(key) == 2) {
                 return HandRanking.ONE_PAIR;
-
-            }
-            for (Integer key1 : countMap.keySet()) {
-                if (countMap.get(key1) == 2) {
-                    for (Integer key2 : countMap.keySet()) {
-                        if (countMap.get(key2) == 2 && key1 != key2) {
-                            return HandRanking.TWO_PAIR;
-                        }
-                    }
-                }
             }
         }
+        
         return HandRanking.NOTHING;
     }
 }
