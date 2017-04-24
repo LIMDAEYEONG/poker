@@ -32,6 +32,7 @@ public class Evaluator {
             }
 
         }
+        Collections.sort(cardList); // Sorting for straight
 
         /* Straight Flush */
         for (Suit key : tempMap.keySet()) {
@@ -65,8 +66,13 @@ public class Evaluator {
             }
         }
 
-        /* Straight*/
-
+        /* Straight */
+        for (int index = 1; index < cardList.size(); index++) {
+            if (cardList.indexOf(index) - cardList.indexOf(index-1) != 1)
+                break;
+            if(index == cardList.size()-1)
+                return HandRanking.STRAIGHT;
+        }
 
         /* Triple */
         for(Integer key : countMap.keySet()){
