@@ -1,5 +1,6 @@
 package com.edu.cnu.poker;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ public class Evaluator {
     public HandRanking evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
+        Collections.sort(cardList);
 
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
@@ -73,13 +75,12 @@ public class Evaluator {
         }
 
         /* Two pair*/
+        int count = 0;
         for (Integer key1 : countMap.keySet()) {
             if (countMap.get(key1) == 2) {
-                for (Integer key2 : countMap.keySet()) {
-                    if (countMap.get(key2) == 2 && key1 != key2) {
-                        return HandRanking.TWO_PAIR;
-                    }
-                }
+                count++;
+                if (count == 2)
+                    return HandRanking.TWO_PAIR;
             }
         }
 
@@ -87,16 +88,6 @@ public class Evaluator {
         for (Integer key : countMap.keySet()) {
             if (countMap.get(key) == 2) {
                 return HandRanking.ONE_PAIR;
-
-            }
-            for (Integer key1 : countMap.keySet()) {
-                if (countMap.get(key1) == 2) {
-                    for (Integer key2 : countMap.keySet()) {
-                        if (countMap.get(key2) == 2 && key1 != key2) {
-                            return HandRanking.TWO_PAIR;
-                        }
-                    }
-                }
             }
         }
         return HandRanking.NOTHING;
