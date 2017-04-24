@@ -99,11 +99,11 @@ public class EvaluatorTest {
     public void 숫자가_5번연속되면_스트레이트이다 () {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(1, Suit.DIAMONDS),
-                new Card(2, Suit.HEARTS),
-                new Card(3, Suit.DIAMONDS),
-                new Card(4, Suit.SPADES),
-                new Card(5, Suit.CLUBS)
+                new Card(10, Suit.DIAMONDS),
+                new Card(11, Suit.HEARTS),
+                new Card(12, Suit.DIAMONDS),
+                new Card(13, Suit.SPADES),
+                new Card(1, Suit.CLUBS)
         );
         HandRanking result = evaluator.evaluate(cardList);
         assertThat(result, is(HandRanking.STRAIGHT));

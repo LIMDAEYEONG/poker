@@ -67,6 +67,12 @@ public class Evaluator {
 
         /* Straight*/
         Collections.sort(cardList);
+        if(cardList.get(0).getRank()==1 && cardList.get(1).getRank()==10) {
+            Card aceCard = cardList.get(0);
+            aceCard.setRank(14);
+            for(int i=0; i<cardList.size()-1; i++) cardList.set(i,cardList.get(i+1));
+            cardList.set(cardList.size()-1,aceCard);
+        }
         for (int index = 1; index < cardList.size(); index++) {
             if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                 break;
