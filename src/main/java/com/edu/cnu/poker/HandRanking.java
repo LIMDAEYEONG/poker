@@ -16,7 +16,7 @@ public enum HandRanking {
 
     HandRanking(int rankOfHand) {
         this.rankOfHand = rankOfHand;
-    }
+    } //construtor
     public int getRankOfHand() {
         return this.rankOfHand;
     }
