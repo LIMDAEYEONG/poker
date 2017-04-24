@@ -12,7 +12,6 @@ public class Evaluator {
     public HandRanking evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
-        Collections.sort(cardList);
 
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
@@ -66,9 +65,10 @@ public class Evaluator {
             }
         }
 
-        /* Straight */
+        /* Straight*/
+        Collections.sort(cardList);
         for (int index = 1; index < cardList.size(); index++) {
-            if (cardList.indexOf(index) - cardList.indexOf(index-1) != 1)
+            if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                 break;
             if(index == cardList.size()-1)
                 return HandRanking.STRAIGHT;
