@@ -5,12 +5,12 @@ public enum HandRanking {
     STRAIGHT_FULSH(8),
     FOUR_CARD(7),
     FULL_HOUSE(6),
-    FULSH(5),
+    FLUSH(5),
     STRAIGHT(4),
     TRIPLE(3),
     TWO_PAIR(2),
     ONE_PAIR(1),
-    NOTHING(0),
+    NOTHING(0);
 
     private int rankOfHand;
 

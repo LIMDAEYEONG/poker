@@ -23,8 +23,8 @@ public class EvaluatorTest {
                 new Card(13,Suit.CLUBS),
                 new Card(2,Suit.CLUBS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FLUSH"));
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.FLUSH));
     }
 
     @Test
@@ -37,8 +37,8 @@ public class EvaluatorTest {
                 new Card(9, Suit.SPADES),
                 new Card(12, Suit.CLUBS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("ONE_PAIR"));
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.ONE_PAIR));
     }
 
 

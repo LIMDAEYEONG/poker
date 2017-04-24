@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by cse on 2017-04-17.
  */
 public class Evaluator {
-    public String evaluate(List<Card> cardList) {
+    public HandRanking evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
 
@@ -35,16 +35,16 @@ public class Evaluator {
 
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
-                return "FLUSH";
+                return HandRanking.FLUSH;
             }
         }
 
         for (Integer key : countMap.keySet()) {
             if (countMap.get(key) == 2) {
-                return "ONE_PAIR";
+                return HandRanking.ONE_PAIR;
             }
         }
 
-        return "NOTHING";
+        return HandRanking.NOTHING;
     }
 }
