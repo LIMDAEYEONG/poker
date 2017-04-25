@@ -45,14 +45,12 @@ public class Evaluator {
                             return HandRanking.ROYAL_STRAIGHT_FLUSH;
                     }
                 }
-
             }
         }
 
         /* Straight Flush */
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
-
                 for (int index = 1; index < cardList.size(); index++) { //일단 스트레이트 플러쉬인 경우
                     if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                         break;
