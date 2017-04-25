@@ -1,8 +1,10 @@
 package com.edu.cnu.poker;
 
 public enum HandRanking {
+    BACK_ROYAL_STRAIGHT_FLUSH(11),
+    BACK_STRAIGHT_FLUSH(10),
     ROYAL_STRAIGHT_FLUSH(9),
-    STRAIGHT_FULSH(8),
+    STRAIGHT_FLUSH(8),
     FOUR_CARD(7),
     FULL_HOUSE(6),
     FLUSH(5),

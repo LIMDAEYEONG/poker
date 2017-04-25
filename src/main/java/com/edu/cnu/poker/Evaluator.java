@@ -53,9 +53,20 @@ public class Evaluator {
         /* Straight Flush */
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
-                if(isCardsStraight(1,cardList)) return HandRanking.STRAIGHT_FULSH; // 포 스트레이트 경우
-                if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10 && // 백 스트레이트 경우
-                        isCardsStraight(2,cardList)) return HandRanking.ROYAL_STRAIGHT_FLUSH;
+                for (int index = 1; index < cardList.size(); index++) { //일단 스트레이트 플러쉬인 경우
+                    if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
+                        break;
+                    if(index == cardList.size()-1)
+                        return HandRanking.STRAIGHT_FLUSH;
+                }
+                if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10){ //백 스트레이트 플러쉬인 경우
+                    for(int index = 2; index < cardList.size(); index++){
+                        if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
+                            break;
+                        if(index == cardList.size()-1)
+                            return HandRanking.STRAIGHT_FLUSH;
+                    }
+                }
             }
         }
 
