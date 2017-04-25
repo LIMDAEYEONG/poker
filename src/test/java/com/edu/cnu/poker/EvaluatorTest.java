@@ -120,7 +120,7 @@ public class EvaluatorTest {
                 new Card(5, Suit.DIAMONDS)
         );
         HandRanking result = evaluator.evaluate(cardList);
-        assertThat(result, is(HandRanking.STRAIGHT_FULSH));
+        assertThat(result, is(HandRanking.STRAIGHT_FLUSH));
     }
 
     @Test
