@@ -57,14 +57,14 @@ public class Evaluator {
                     if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                         break;
                     if(index == cardList.size()-1)
-                        return HandRanking.STRAIGHT_FULSH;
+                        return HandRanking.STRAIGHT_FLUSH;
                 }
                 if (cardList.get(0).getRank() == 1 && cardList.get(1).getRank() == 10){ //백 스트레이트 플러쉬인 경우
                     for(int index = 2; index < cardList.size(); index++){
                         if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                             break;
                         if(index == cardList.size()-1)
-                            return HandRanking.STRAIGHT_FULSH;
+                            return HandRanking.STRAIGHT_FLUSH;
                     }
                 }
 
