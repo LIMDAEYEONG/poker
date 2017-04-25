@@ -62,7 +62,7 @@ public class Evaluator {
                         if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                             break;
                         if(index == cardList.size()-1)
-                            return HandRanking.STRAIGHT_FLUSH;
+                            return HandRanking.BACK_STRAIGHT_FLUSH;
                     }
                 }
 
@@ -106,7 +106,7 @@ public class Evaluator {
                 if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
                     break;
                 if(index == cardList.size()-1)
-                    return HandRanking.STRAIGHT;
+                    return HandRanking.BACK_STRAIGHT;
             }
         }
 
