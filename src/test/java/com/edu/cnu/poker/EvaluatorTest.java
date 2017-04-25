@@ -137,6 +137,20 @@ public class EvaluatorTest {
         assertThat(result, is(HandRanking.ROYAL_STRAIGHT_FLUSH));
     }
 
+    @Test
+    public void 숫자가_5번연속이고_BACK이면_백스트레이트이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.SPADES),
+                new Card(10, Suit.DIAMONDS),
+                new Card(11, Suit.SPADES),
+                new Card(12, Suit.HEARTS),
+                new Card(13, Suit.SPADES)
+        );
+        HandRanking result = evaluator.evaluate(cardList);
+        assertThat(result, is(HandRanking.BACK_STRAIGHT));
+    }
+
 }
 
 
