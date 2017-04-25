@@ -12,8 +12,8 @@ public class Evaluator {
     public HandRanking evaluate(List<Card> cardList) {
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
-        Collections.sort(cardList);
 
+        Collections.sort(cardList);
 
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
@@ -33,6 +33,7 @@ public class Evaluator {
             }
 
         }
+        Collections.sort(cardList); // Sorting for straight
 
         /* Loyal Straight Flush */
         for (Suit key : tempMap.keySet()) {
@@ -65,7 +66,6 @@ public class Evaluator {
                             return HandRanking.BACK_STRAIGHT_FLUSH;
                     }
                 }
-
             }
         }
 
@@ -109,9 +109,6 @@ public class Evaluator {
                     return HandRanking.BACK_STRAIGHT;
             }
         }
-
-
-
         /* Triple */
         for(Integer key : countMap.keySet()){
             if(countMap.get(key) == 3){
@@ -135,6 +132,17 @@ public class Evaluator {
                 return HandRanking.ONE_PAIR;
             }
         }
+
         return HandRanking.NOTHING;
+    }
+
+    private boolean isCardsStraight(int startIndex, List<Card> cardList) {
+        for (int index = startIndex; index < cardList.size(); index++) {
+            if (cardList.get(index).getRank() - cardList.get(index-1).getRank() != 1)
+                break;
+            if(index == cardList.size()-1)
+                return true;
+        }
+        return false;
     }
 }
